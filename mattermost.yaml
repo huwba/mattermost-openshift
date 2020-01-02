@@ -172,7 +172,7 @@ objects:
     name: mattermost
   data:
     db_database: '${POSTGRESQL_DATABASE}'
-    db_host: postgresql.mattermost.svc
+    db_host: postgresql.mattermost.svc.cluster.local
     db_port: '5432'
 parameters:
 - name: APPLICATION_NAME
@@ -180,7 +180,7 @@ parameters:
   value: mattermost
 - name: MATTERMOST_VERSION
   required: true
-  value: '5.15.1'
+  value: '5.18.0'
 - name: VOLUME_CAPACITY
   required: true
   value: 10G
