@@ -26,4 +26,4 @@ else
 	echo -ne "Using existing config: "$MM_CONFIG
 fi
 
-exec /opt/mattermost/bin/platform -c $MM_CONFIG
+exec /opt/mattermost/bin/mattermost -c $MM_CONFIG
