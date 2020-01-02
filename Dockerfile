@@ -1,12 +1,13 @@
 FROM alpine:3.10.2
 
-LABEL maintainer="Thomas Schwärzl <thomas.schwaerzl@nttdata.com>"
+LABEL maintainer="manuel huber <manus@huwba.org>
+# based on the work of "Thomas Schwärzl <thomas.schwaerzl@nttdata.com>"
 # based on the work of Christoph Görn <goern@b4mad.net>
 # based on the work of Takayoshi Kimura <tkimura@redhat.com>
 
 ENV container docker
-ENV MATTERMOST_VERSION 5.15.1
-ENV MATTERMOST_VERSION_SHORT 5151
+ENV MATTERMOST_VERSION 5.18.0
+ENV MATTERMOST_VERSION_SHORT 5180
 ARG PUID=2000
 ARG PGID=2000
 
@@ -21,7 +22,7 @@ LABEL Component="mattermost" \
 LABEL io.k8s.description="Mattermost is an open source, self-hosted Slack-alternative" \
       io.k8s.display-name="Mattermost {$MATTERMOST_VERSION}" \
       io.openshift.expose-services="8065:mattermost" \
-      io.openshift.tags="mattermost,slack"
+      io.openshift.tags="mattermost,slack,hipchat"
 
 # Install some needed packages
 RUN apk add --no-cache \
@@ -38,10 +39,10 @@ RUN apk add --no-cache \
 
 RUN mkdir -p /opt && \
     cd /opt && \
-    curl -LO -v https://releases.mattermost.com/${MATTERMOST_VERSION}/mattermost-team-${MATTERMOST_VERSION}-linux-amd64.tar.gz && \
-    tar xf mattermost-team-${MATTERMOST_VERSION}-linux-amd64.tar.gz &&\
-    rm mattermost-team-${MATTERMOST_VERSION}-linux-amd64.tar.gz
-
+    curl -LO -v https://releases.mattermost.com/${MATTERMOST_VERSION}/mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz && \
+    tar xf mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz &&\
+    rm mattermost-${MATTERMOST_VERSION}-linux-amd64.tar.gz
+    
 COPY config.json /opt/mattermost/config/config.json
 
 COPY mattermost-launch.sh /opt/mattermost/bin/mattermost-launch.sh
