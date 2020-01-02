@@ -3,7 +3,7 @@
 ![Docker Build Status](https://img.shields.io/docker/build/tschwaerzl/mattermost-openshift.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/tschwaerzl/mattermost-openshift.svg)
 
-OpenShift application template for Mattermost Team Edition.
+OpenShift application template for Mattermost Team & Enterprise Edition.
 
 ## Table of contents
 
@@ -23,21 +23,33 @@ You will need a OpenShift Origin 3 or Minishift up and running. Also Mattermost 
 oc new-project mattermost
 ```
 
-2. Create a secret named `mattermost-database` with `user` and `password` of the PostgreSQL database you deployed.
+2. Deploy postgreDB w/ user `mmDBuser` | password `mmDBpwd` | RAM Limit of 1024Mb | Storage of 10GiB
+
+```
+ oc new-app postgresql-persistent -p POSTGRESQL_USER=mmDBuser -p POSTGRESQL_PASSWORD=mmDBpwd  -p POSTGRESQL_DATABASE=mattermost -p MEMORY_LIMIT=1024Mi -p VOLUME_CAPACITY=10Gi
+```
+
+
+3. Create a secret named `mattermost-database` with `user` and `password` of the PostgreSQL database you deployed.
 ```bash
 oc create secret generic mattermost-database --from-literal=user=mm_user --from-literal=password=mm_pass
 ```
 
-3. Import the template
+4. Import the template
 ```bash
 oc create -f mattermost.yaml
 ```
 
-4. Deploy the newly created Mattermost from the Catalog into your project
+5. Deploy the newly created Mattermost from the Catalog into your project
 
-5. Modify the ConfigMap `mattermost` to meet your PostgreSQL hostname, port and database name
+6. link the secret from database to mattermost
+```
+oc secrets link mattermost mattermost-database
+```
 
-6. Wait for the Pods to launch and access your new Mattermost by the created service.
+7. Modify the ConfigMap `mattermost` to meet your PostgreSQL hostname, port and database name
+
+8. Wait for the Pods to launch and access your new Mattermost by the created service.
 
 Have fun.
 
