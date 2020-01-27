@@ -150,6 +150,24 @@
         "QueryTimeout": 60,
         "LoginFieldName": ""
     },
+    "PluginSettings": {
+        "Enable": true,
+        "EnableUploads": true,
+        "AllowInsecureDownloadUrl": false,
+        "EnableHealthCheck": true,
+        "Directory": "./plugins",
+        "ClientDirectory": "./plugins/client",
+        "Plugins": {},
+        "PluginStates": {
+          "com.mattermost.nps": {
+            "Enable": true
+          }
+        },
+        "EnableMarketplace": true,
+        "RequirePluginSignature": false,
+        "MarketplaceUrl": "https://api.integrations.mattermost.com",
+        "SignaturePublicKeyFiles": []
+      },
     "ComplianceSettings": {
         "Enable": false,
         "Directory": "./data/",
