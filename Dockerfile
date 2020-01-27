@@ -1,7 +1,7 @@
 FROM alpine:3.11.3
 
-LABEL maintainer="manuel huber <manus@huwba.org>
-# based on the work of "Thomas Schwärzl <thomas.schwaerzl@nttdata.com>"
+LABEL maintainer="manus huber <manus@huwba.org>"
+# based on the work of Thomas Schwärzl <thomas.schwaerzl@nttdata.com>
 # based on the work of Christoph Görn <goern@b4mad.net>
 # based on the work of Takayoshi Kimura <tkimura@redhat.com>
 
