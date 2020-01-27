@@ -1,4 +1,4 @@
-FROM alpine:3.10.2
+FROM alpine:3.11.3
 
 LABEL maintainer="manuel huber <manus@huwba.org>
 # based on the work of "Thomas Schwärzl <thomas.schwaerzl@nttdata.com>"
@@ -6,14 +6,14 @@ LABEL maintainer="manuel huber <manus@huwba.org>
 # based on the work of Takayoshi Kimura <tkimura@redhat.com>
 
 ENV container docker
-ENV MATTERMOST_VERSION 5.18.0
-ENV MATTERMOST_VERSION_SHORT 5180
+ENV MATTERMOST_VERSION 5.19.1
+ENV MATTERMOST_VERSION_SHORT 5191
 ARG PUID=2000
 ARG PGID=2000
 
 # Labels consumed by Red Hat build service
 LABEL Component="mattermost" \
-      name="alpine/mattermost-${MATTERMOST_VERSION_SHORT}-alpine38" \
+      name="alpine/mattermost-${MATTERMOST_VERSION_SHORT}-alpine3113" \
       vendor=Community \
       Version="${MATTERMOST_VERSION}" \
       Release="1"
@@ -22,7 +22,7 @@ LABEL Component="mattermost" \
 LABEL io.k8s.description="Mattermost is an open source, self-hosted Slack-alternative" \
       io.k8s.display-name="Mattermost {$MATTERMOST_VERSION}" \
       io.openshift.expose-services="8065:mattermost" \
-      io.openshift.tags="mattermost,slack,hipchat"
+      io.openshift.tags="mattermost,slack,hipchat,msteams,irc"
 
 # Install some needed packages
 RUN apk add --no-cache \
