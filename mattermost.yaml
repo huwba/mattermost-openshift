@@ -11,7 +11,7 @@ metadata:
   name: mattermost
   annotations:
     description: |-
-      Community template for running Mattermost Team Edition on Openshift (Origin)
+      Community template for running Mattermost Team and [€]nterpris[€] Edition on Openshift 
       
       https://about.mattermost.com
 
@@ -20,10 +20,10 @@ metadata:
     openshift.io/display-name: Mattermost
     tags: mattermost
     iconClass: fa fa-comments
-    template.openshift.io/documentation-url: https://github.com/tschwaerzl/mattermost-openshift/blob/master/README.md
+    template.openshift.io/documentation-url: https://github.com/huwba/mattermost-openshift/blob/master/README.md
     template.openshift.io/long-description: This template provides a Mattermost service, it depends on a Secret and PostgreSQL.
     template.openshift.io/provider-display-name: Mattermost Community
-    template.openshift.io/support-url: https://github.com/tschwaerzl/mattermost-openshift/issues
+    template.openshift.io/support-url: https://github.com/huwba/mattermost-openshift/issues
 
 objects:
 - kind: PersistentVolumeClaim
@@ -35,7 +35,17 @@ objects:
     - ReadWriteOnce
     resources:
       requests:
-        storage: "${VOLUME_CAPACITY}"
+        storage: "${VOLUME_CAPACITY_DATA}"
+- kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    name: "mattermost-plugins"
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+       storage: "${VOLUME_CAPACITY_PLUGINS}"
 - kind: ImageStream
   apiVersion: v1
   metadata:
@@ -44,13 +54,13 @@ objects:
     tags:  
     - name: '${MATTERMOST_VERSION}'
       annotations:
-        description: The Mattermost image from docker.io/tschwaerzl/mattermost-openshift
+        description: The Mattermost image from docker.io/huwba/mattermost-openshift
         openshift.io/display-name: 'Mattermost ${MATTERMOST_VERSION}'
         tags: mattermost
         version: '${MATTERMOST_VERSION}'
       from:
         kind: DockerImage
-        name: 'docker.io/tschwaerzl/mattermost-openshift:${MATTERMOST_VERSION}'
+        name: 'docker.io/huwba/mattermost-openshift:${MATTERMOST_VERSION}'
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:
@@ -74,7 +84,9 @@ objects:
           volumeMounts:
             - mountPath: /opt/mattermost/data
               name: mattermost-data
-          env:
+            - mountPath: /opt/mattermost/plugins
+              name: mattermost-plugins
+              env:
           - name: DB_USERNAME
             valueFrom:
               secretKeyRef:
@@ -133,6 +145,9 @@ objects:
         - name: mattermost-data
           persistentVolumeClaim:
             claimName: mattermost-data
+        - name: mattermost-plugins
+          persistentVolumeClaim:
+            claimName: mattermost-plugins
     triggers:
     - type: ImageChange
       imageChangeParams:
@@ -180,10 +195,13 @@ parameters:
   value: mattermost
 - name: MATTERMOST_VERSION
   required: true
-  value: '5.18.0'
-- name: VOLUME_CAPACITY
+  value: '5.19.1'
+- name: VOLUME_CAPACITY_DATA
   required: true
   value: 10G
+- name: VOLUME_CAPACITY_PLUGINS
+  required: true
+  value: 5G
 - description: Name of the PostgreSQL database accessed.
   displayName: PostgreSQL Database Name
   name: POSTGRESQL_DATABASE
