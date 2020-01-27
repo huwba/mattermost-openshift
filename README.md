@@ -1,7 +1,7 @@
-# Mattermost for OpenShift &nbsp; [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Deploy%20Mattermost%20easily%20on%20OpenShift%20in%20no%20time%204&url=https://github.com/tschwaerzl/mattermost-openshift&via=tschwaerzl&hashtags=openshift,mattermost)
+# Mattermost for OpenShift &nbsp; [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Deploy%20Mattermost%20easily%20on%20OpenShift%20in%20no%20time%204&url=https://github.com/huwba/mattermost-openshift&via=huwba&hashtags=openshift,mattermost)
 
-![Docker Build Status](https://img.shields.io/docker/build/tschwaerzl/mattermost-openshift.svg)
-![Docker Pulls](https://img.shields.io/docker/pulls/tschwaerzl/mattermost-openshift.svg)
+![Docker Build Status](https://img.shields.io/docker/build/huwba/mattermost-openshift.svg)
+![Docker Pulls](https://img.shields.io/docker/pulls/huwba/mattermost-openshift.svg)
 
 OpenShift application template for Mattermost Team & Enterprise Edition.
 
@@ -59,4 +59,4 @@ Special thanks to everyone who contributed to getting the Mattermost OpenShift T
 
 ## Help
 
-You tried to deploy and need help real quick? Message [@tschwaerzl](https://twitter.com/tschwaerzl) via Twitter or open an issue.
+You tried to deploy and need help real quick? Message [@huwba](https://twitter.com/huwba) via Twitter or open an issue.
