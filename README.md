@@ -1,6 +1,5 @@
 # Mattermost for OpenShift &nbsp; [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Deploy%20Mattermost%20easily%20on%20OpenShift%20in%20no%20time%204&url=https://github.com/huwba/mattermost-openshift&via=huwba&hashtags=openshift,mattermost)
 
-![Docker Build Status](https://img.shields.io/docker/build/huwba/mattermost-openshift.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/huwba/mattermost-openshift.svg)
 
 OpenShift application template for Mattermost Team & Enterprise Edition.
