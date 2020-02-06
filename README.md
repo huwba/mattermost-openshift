@@ -31,7 +31,7 @@ oc new-project mattermost
 
 3. Create a secret named `mattermost-database` with `user` and `password` of the PostgreSQL database you deployed.
 ```bash
-oc create secret generic mattermost-database --from-literal=user=mm_user --from-literal=password=mm_pass
+oc create secret generic mattermost-database --from-literal=user=mmDBuser --from-literal=password=mmDBpwd
 ```
 
 4. Import the template
