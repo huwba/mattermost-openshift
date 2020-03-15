@@ -6,8 +6,8 @@ LABEL maintainer="manus huber <manus@huwba.org>"
 # based on the work of Takayoshi Kimura <tkimura@redhat.com>
 
 ENV container docker
-ENV MATTERMOST_VERSION 5.20.1
-ENV MATTERMOST_VERSION_SHORT 5201
+ENV MATTERMOST_VERSION 5.21.0
+ENV MATTERMOST_VERSION_SHORT 5210
 ARG PUID=2000
 ARG PGID=2000
 
