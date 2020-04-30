@@ -1,4 +1,4 @@
-FROM alpine:3.11.3
+FROM alpine:3.11.6
 
 LABEL maintainer="manus huber <manus@huwba.org>"
 # based on the work of Thomas Schwärzl <thomas.schwaerzl@nttdata.com>
