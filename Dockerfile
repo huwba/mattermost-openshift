@@ -13,7 +13,7 @@ ARG PGID=2000
 
 # Labels consumed by Red Hat build service
 LABEL Component="mattermost" \
-      name="alpine/mattermost-${MATTERMOST_VERSION_SHORT}-alpine3113" \
+      name="alpine/mattermost-${MATTERMOST_VERSION_SHORT}-alpine3116" \
       vendor=Community \
       Version="${MATTERMOST_VERSION}" \
       Release="1"
